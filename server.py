@@ -21,17 +21,25 @@ class Endpoint:
     
     @cherrypy.expose
     def random(self):
+        '''Returns an array containing ten random integers from 0 to 100'''
         nums = [random.randint(0, 100) for i in range(10)]
         return json.dumps(nums)
 
     @cherrypy.expose
     def lorem(self, count=3):
+        '''Returns an array containing paragraphs of lorem ipsum text. Returns three paragraphs by default. Specify more or less in the url.'''
         count = int(count)
         
         lipgen = lipsum.Generator()
         paragraphs = [lipgen.generate_paragraph() for i in range(count)]
         
         return json.dumps(paragraphs)
+
+    @cherrypy.expose
+    def error(self):
+        '''Returns a random HTTP error'''
+        errors = [403, 404, 500]
+        raise cherrypy.HTTPError(random.choice(errors))
 
 if __name__ == '__main__':
     cherrypy.quickstart(Endpoint())
