@@ -1,0 +1,13 @@
+# json_endpoint
+
+## About
+
+json_endpoint is a simple CherryPy application which provides a few different urls that each serve a different bit of JSON.
+
+It's intended to be used locally when you need to quickly test some JSON-consuming app and don't want to focus too much on the details of the JSON data.
+
+
+## Requirements
+
+- [CherryPy](http://cherrypy.org)
+- [Lorem Ipsum Generator](http://code.google.com/p/lorem-ipsum-generator/)
